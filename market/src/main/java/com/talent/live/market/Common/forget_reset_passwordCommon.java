@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class forget_reset_passwordCommon {
     private String username;
-    private String password;
+    private String passwordNew;
     private String forgettoken;
 }

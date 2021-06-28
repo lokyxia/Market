@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class AddTalentUserCommon {
-    private String id;
+//    private String id;
 
     private String username;
 

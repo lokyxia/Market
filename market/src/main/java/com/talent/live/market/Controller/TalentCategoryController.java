@@ -16,10 +16,10 @@ public class TalentCategoryController {
     @Autowired
     private TalentCategoryServer CategoryServer;
 
-    @PostMapping("/addCategory")
-    public Result addTalentCategory(@RequestBody TalentCategoryCommon TCC){
-        return CategoryServer.addCategory(TCC);
-    }
+//    @PostMapping("/addCategory")
+//    public Result addTalentCategory(@RequestBody TalentCategoryCommon common){
+//        return CategoryServer.addCategory(common);
+//    }
 
 
 }

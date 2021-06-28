@@ -27,4 +27,12 @@ public interface TalentUserServer {
     Result ForgetCheckAnswer(ForgetCheckAnswerCommon common);
 
     Result ForgetResetPassword(forget_reset_passwordCommon common);
+
+    Result reset_password(ResetPasswordCommon common);
+
+    Result update_information(UpdateInformationCommon common);
+
+    Result loginBack(LoginCommon common);
+
+    PageResult<TalentUser> list(FindUserPageCommon common);
 }

@@ -21,10 +21,10 @@ public class TalentProductController {
     @Autowired
     private TalentProductServer talentProductServer;
 
-    @PostMapping("/addtalentproduct")
-    public Result addTalentProduct(@RequestBody TalentProductCommon common){
-        return talentProductServer.addTalentProduct(common);
-    }
+//    @PostMapping("/addtalentproduct")
+//    public Result addTalentProduct(@RequestBody TalentProductCommon common){
+//        return talentProductServer.addTalentProduct(common);
+//    }
 
     @PostMapping("/findTalentProductByCategoryId")
     public Result findTalentProductByCategoryId(@RequestBody String categoryId){

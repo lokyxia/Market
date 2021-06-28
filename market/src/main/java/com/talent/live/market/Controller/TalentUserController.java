@@ -29,9 +29,9 @@ public class TalentUserController {
             String value = UUID.randomUUID().toString();
             TalentUser talentUser= (TalentUser) result.getData();
             session.setAttribute("currentSession",result.getData());
-            TokenCache.setKey("token_+"+talentUser.getUsername(),value);
+            TokenCache.setKey("token_"+talentUser.getUsername(),value);
         }
-
+        System.out.println(TokenCache.getKey(loginCommon.getUserName()));
         return talentUserServer.login(loginCommon);
     }
 
@@ -48,8 +48,6 @@ public class TalentUserController {
 
     @RequestMapping("/check_valid")
     public Result check_valid(CheckValidCommon common){
-
-
         return talentUserServer.checkValid(common);
     }
 
@@ -69,7 +67,7 @@ public class TalentUserController {
 
     }
 
-    @RequestMapping("/get_question")
+    @PostMapping("/get_question")
     public Result get_question(@RequestBody String username){
         return talentUserServer.GetQuestion(username);
     }
@@ -82,8 +80,20 @@ public class TalentUserController {
 
     @RequestMapping("/forget_reset_password")
     public Result forget_reset_password(@RequestBody forget_reset_passwordCommon common){
-
         return talentUserServer.ForgetResetPassword(common);
+    }
 
+    @PostMapping("/reset_password")
+    public Result reset_password(@RequestBody ResetPasswordCommon common,HttpSession session ){
+        TalentUser talentUser =(TalentUser) session.getAttribute("currentSession");
+        common.setId(talentUser.getId());
+        return talentUserServer.reset_password(common);
+    }
+
+    @PostMapping("/update_information")
+    public  Result update_information(@RequestBody UpdateInformationCommon common,HttpSession session){
+        TalentUser talentUser =(TalentUser)session.getAttribute("currentSession");
+        common.setUsername(talentUser.getUsername());
+         return talentUserServer.update_information(common);
     }
 }

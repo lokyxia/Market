@@ -10,8 +10,7 @@ public class TalentCategoryCommon {
 
     private String name;
 
-    private Boolean status;
+//    private Boolean status;
 
-    private Integer sortOrder;
 
 }

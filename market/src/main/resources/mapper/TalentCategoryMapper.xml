@@ -10,8 +10,35 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
+  <update id="updateByPrimaryKeySelective" parameterType="com.talent.live.market.model.TalentCategory">
+    update talent_category
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="sortOrder != null">
+        sort_order = #{sortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
   <sql id="Base_Column_List">
     id, parent_id, name, status, sort_order, create_time, update_time
   </sql>
+  <select id="selectCategoryIdByParentId" parameterType="string" resultType="list">
+    select id from talent_category where parent_id=#{categoryId}
+  </select>
 
 </mapper>

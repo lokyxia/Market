@@ -26,7 +26,10 @@
     select count(*) from talent_user where username=#{userName} and question=#{question} and answer=#{answer}
   </select>
   <update id="updateUserPassword" parameterType="com.talent.live.market.Common.forget_reset_passwordCommon">
-    update talent_user set password=#{password} where username=#{username}
+    update talent_user set password=#{passwordNew} where username=#{username}
+  </update>
+  <update id="ResetPassword" parameterType="com.talent.live.market.Common.ResetPasswordCommon">
+    update talent_user set password=#{passwordNew} where password=#{passwordOld}
   </update>
 
 </mapper>
